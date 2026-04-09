@@ -1,40 +1,51 @@
-// Efeito de rolagem suave (Smooth Scroll)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+const dadosAgro = [
+    {
+        titulo: "Sistemas Agroflorestais",
+        descricao: "Integração de árvores com cultivos agrícolas, recuperando o solo e diversificando a renda.",
+        imagem: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=500&q=80",
+        categoria: "Sustentabilidade"
+    },
+    {
+        titulo: "Cooperativismo Familiar",
+        descricao: "A união de pequenos produtores para fortalecer a comercialização e logística no mercado.",
+        imagem: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=500&q=80",
+        categoria: "Economia"
+    },
+    {
+        titulo: "Agricultura Orgânica",
+        descricao: "Produção sem agrotóxicos, priorizando a saúde do consumidor e a biodiversidade local.",
+        imagem: "https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?auto=format&fit=crop&w=500&q=80",
+        categoria: "Produção"
+    }
+];
+
+function renderCards(lista) {
+    const container = document.getElementById('results');
+    container.innerHTML = '';
+
+    lista.forEach(item => {
+        container.innerHTML += `
+            <div class="card">
+                <img src="${item.imagem}" alt="${item.titulo}">
+                <div class="card-content">
+                    <h3>${item.titulo}</h3>
+                    <p>${item.descricao}</p>
+                    <br>
+                    <small>Categoria: <strong>${item.categoria}</strong></small>
+                </div>
+            </div>
+        `;
     });
-});
+}
 
-// Menu Mobile (Toggle)
-const mobileMenu = document.getElementById('mobile-menu');
-const navLinks = document.querySelector('.nav-links');
+function searchInfo() {
+    const termo = document.getElementById('searchInput').value.toLowerCase();
+    const filtrados = dadosAgro.filter(item => 
+        item.titulo.toLowerCase().includes(termo) || 
+        item.descricao.toLowerCase().includes(termo)
+    );
+    renderCards(filtrados);
+}
 
-mobileMenu.addEventListener('click', () => {
-    // Simples alternância de exibição para dispositivos móveis
-    if (navLinks.style.display === 'flex') {
-        navLinks.style.display = 'none';
-    } else {
-        navLinks.style.display = 'flex';
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'absolute';
-        navLinks.style.top = '70px';
-        navLinks.style.left = '0';
-        navLinks.style.width = '100%';
-        navLinks.style.backgroundColor = '#fff';
-        navLinks.style.padding = '20px';
-        navLinks.style.textAlign = 'center';
-    }
-});
-
-// Mudança de cor do header ao rolar
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.style.padding = '10px 0';
-    } else {
-        header.style.padding = '20px 0';
-    }
-});
+// Carregamento inicial
+window.onload = () => renderCards(dadosAgro);
