@@ -3,59 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroForte | Futuro Sustentável</title>
+    <title>AgroForte - Futuro Sustentável</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
     <header>
-        <nav class="container">
+        <nav class="navbar">
             <div class="logo">Agro<span>Forte</span></div>
             <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#pilares">Pilares</a></li>
-                <li><a href="#contato" class="btn-nav">Contato</a></li>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Potencialidades</a></li>
+                <li><a href="#">Contato</a></li>
             </ul>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <h1>Futuro Sustentável</h1>
-            <p>O equilíbrio perfeito entre a alta produtividade e a preservação do meio ambiente.</p>
-            <a href="#sobre" class="btn-main">Saiba Mais</a>
-        </div>
-    </section>
-
-    <section id="pilares" class="container">
-        <h2 class="section-title">Nossos Compromissos</h2>
-        <div class="grid-pilares">
-            <div class="card">
-                <h3>Tecnologia de Precisão</h3>
-                <p>Otimização de recursos hídricos e redução de desperdícios através de dados.</p>
-            </div>
-            <div class="card">
-                <h3>Regeneração do Solo</h3>
-                <p>Práticas agrícolas que devolvem a vida à terra e garantem safras futuras.</p>
-            </div>
-            <div class="card">
-                <h3>Energia Limpa</h3>
-                <p>Implementação de matrizes renováveis em toda a cadeia produtiva.</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>O Futuro é Sustentável</h1>
+            <p>Equilíbrio entre produção e preservação para a agricultura familiar.</p>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Busque por técnicas, culturas ou regiões...">
+                <button onclick="searchInfo()"><i class="fas fa-search"></i> Buscar</button>
             </div>
         </div>
     </section>
 
-    <footer id="contato">
-        <div class="container">
-            <p>&copy; 2026 AgroForte - Tecnologia a serviço da natureza.</p>
-        </div>
+    <main class="container">
+        <section id="results" class="info-grid">
+            </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AgroForte - Referências: EMBRAPA & Ministério do Desenvolvimento Agrário</p>
     </footer>
 
     <script src="script.js"></script>
